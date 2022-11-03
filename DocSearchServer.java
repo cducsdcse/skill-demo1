@@ -24,7 +24,7 @@ class FileHelpers {
         }
         return result;
     }
-    static String readFile(File f) throws IOException {
+    static String readFile(File f) throws IOException { //readFile --> String s
         return new String(Files.readAllBytes(f.toPath()));
     }
 }
@@ -43,8 +43,8 @@ class Handler implements URLHandler {
            if (parameters[0].equals("q")) {
                String result = "";
                List<String> foundPaths = new ArrayList<>();
-               for(File f: paths) {
-                   if(FileHelpers.readFile(f).contains(parameters[1])) {
+               for(File f: paths) { 
+                   if(f.toString().contains(parameters[1])) { //change f to f.toString()
                        foundPaths.add(f.toString());
                    }
                }
